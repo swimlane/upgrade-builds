@@ -1,6 +1,6 @@
 {
   "name": "@angular/upgrade",
-  "version": "2.4.10-6b57928",
+  "version": "2.4.10-6b57929",
   "description": "Angular - the library for easing update from v1 to v2",
   "main": "bundles/upgrade.umd.js",
   "module": "index.js",
