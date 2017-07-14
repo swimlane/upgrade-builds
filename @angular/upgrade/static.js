@@ -1315,13 +1315,13 @@ var UpgradeModule = (function () {
                 setTimeout(function () {
                     var rootScope = $injector.get('$rootScope');
                     var subscription = _this.ngZone.onMicrotaskEmpty.subscribe({
-                        next: function () {
-                          if (rootScope.$$phase !== '$digest') {
-                            rootScope.$digest();
-                          }
+                      next: function () {
+                        if (rootScope.$$phase !== '$digest') {
+                          rootScope.$digest();
                         }
-                      });
-                    $rootScope.$on('$destroy', function () { subscription.unsubscribe(); });
+                      }
+                    });
+                    rootScope.$on('$destroy', function () { subscription.unsubscribe(); });
                 }, 0);
             }
         ]);

@@ -1307,7 +1307,7 @@ var UpgradeModule = (function () {
                           }
                         }
                       });
-                    $rootScope.$on('$destroy', function () { subscription.unsubscribe(); });
+                    rootScope.$on('$destroy', function () { subscription.unsubscribe(); });
                 }, 0);
             }
         ]);
