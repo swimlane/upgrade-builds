@@ -1206,7 +1206,7 @@ var angular1Providers = [
 var UpgradeModule = (function () {
     function UpgradeModule(
         /** The root {@link Injector} for the upgrade application. */
-        injector, 
+        injector,
         /** The bootstrap zone for the upgrade application */
         ngZone) {
         this.ngZone = ngZone;
@@ -1300,7 +1300,13 @@ var UpgradeModule = (function () {
                 // stabilizing
                 setTimeout(function () {
                     var $rootScope = $injector.get('$rootScope');
-                    var subscription = _this.ngZone.onMicrotaskEmpty.subscribe(function () { return $rootScope.$digest(); });
+                    var subscription = _this.ngZone.onMicrotaskEmpty.subscribe({
+                        next: function () {
+                          if (rootScope.$$phase !== '$digest') {
+                            rootScope.$digest();
+                          }
+                        }
+                      });
                     $rootScope.$on('$destroy', function () { subscription.unsubscribe(); });
                 }, 0);
             }
