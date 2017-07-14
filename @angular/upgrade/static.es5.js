@@ -1299,7 +1299,7 @@ var UpgradeModule = (function () {
                 // We need to do this in the next tick so that we don't prevent the bootup
                 // stabilizing
                 setTimeout(function () {
-                    var $rootScope = $injector.get('$rootScope');
+                    var rootScope = $injector.get('$rootScope');
                     var subscription = _this.ngZone.onMicrotaskEmpty.subscribe({
                         next: function () {
                           if (rootScope.$$phase !== '$digest') {

@@ -1642,6 +1642,7 @@ class UpgradeAdapter {
                     })
                         .then(() => this.ng2BootstrapDeferred.resolve(ng1Injector), onError)
                         .then(() => {
+                          var rootScope = $injector.get('$rootScope');
                           var subscription = _this.ngZone.onMicrotaskEmpty.subscribe({
                             next: function () {
                               if (rootScope.$$phase !== '$digest') {
